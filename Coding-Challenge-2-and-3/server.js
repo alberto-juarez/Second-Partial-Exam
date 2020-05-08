@@ -38,21 +38,19 @@ app.delete('/sports/delete', jsonParser, (req,res) => {
     res.statusMessage = "No ID was provided";
     return res.status(406).end();
   }
-  Sport.borrar(id)
-
-  // .then(r => {
-  //   if (!r.length) {
-  //     res.statusMessage = "No sport was found with that ID";
-  //     return res.status(409).end();
-  //   } else {
-  //     res.statusMessage = "Sport deleted";
-  //     return res.status(204).end();
-  //   }
-  // })
-  // .catch(e => {
-  //   res.statusMessage = "Something wrong happened";
-  //   return res.status(404).end();
-  // })
+  Sport.borrar(id).then(r => {
+    if (!r.length) {
+      res.statusMessage = "No sport was found with that ID";
+      return res.status(409).end();
+    } else {
+      res.statusMessage = "Sport deleted";
+      return res.status(204).end();
+    }
+  })
+  .catch(e => {
+    res.statusMessage = "Something wrong happened";
+    return res.status(404).end();
+  })
   // si  no hay sport con ese id 409
   // si se borro 204
 });
