@@ -31,7 +31,9 @@ const Sport = {
   },
   // hacer lo de delete
   borrar : function(id){
-    return sportCol.find(id).remove().then(x =>{
+    return sportCol.find({id:id})
+    .remove()
+    .then(x =>{
       return "Si se borro";
     })
     .catch(e => {
