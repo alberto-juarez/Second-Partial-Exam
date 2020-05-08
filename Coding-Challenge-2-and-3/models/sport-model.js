@@ -31,7 +31,12 @@ const Sport = {
   },
   // hacer lo de delete
   borrar : function(id){
-    console.log("algo pasa")
+    return sportCol.find(id).remove().then(x =>{
+      return "Si se borro";
+    })
+    .catch(e => {
+      throw new Error("no se borro");
+    });
     // return playerCol.find(id).remove();
   }
 }
